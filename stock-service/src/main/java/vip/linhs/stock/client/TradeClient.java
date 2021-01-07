@@ -43,6 +43,7 @@ public class TradeClient {
 
     public String sendNewInstance(String url, Map<String, Object> params) {
         ClientWrapper clientWrapper = threadLocal.get();
+        // 检测 client 不为null
         assertOpened(clientWrapper);
         return HttpUtil.sendPost(clientWrapper.httpClient, url, params);
     }
