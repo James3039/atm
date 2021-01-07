@@ -139,7 +139,9 @@ public class TradeServiceImpl implements TradeService {
             return Collections.emptyList();
         }
         List<TradeOrder> tradeOrderList = getTradeOrderList();
-        return data.stream().filter(v -> StockUtil.isStockCode(v.getZqdm())).map(v -> {
+        return data.stream()
+                //.filter(v -> StockUtil.isStockCode(v.getZqdm()))
+                .map(v -> {
             DealVo dealVo = new DealVo();
             dealVo.setTradeCode(v.getCjbh());
             dealVo.setPrice(v.getCjjg());
@@ -148,9 +150,9 @@ public class TradeServiceImpl implements TradeService {
             dealVo.setVolume(v.getCjsl());
             dealVo.setEntrustCode(v.getWtbh());
             dealVo.setStockCode(v.getZqdm());
-            StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
-            dealVo.setStockName(stockInfo.getName());
-            dealVo.setAbbreviation(stockInfo.getAbbreviation());
+            //StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
+            dealVo.setStockName(v.getZqmc());
+            //dealVo.setAbbreviation(stockInfo.getAbbreviation());
             tradeOrderList.forEach(vv -> {
                 if (v.getCjbh().equals(vv.getTradeCode())) {
                     if (SubmitRequest.S.equals(vv.getTradeType())) {
@@ -171,17 +173,17 @@ public class TradeServiceImpl implements TradeService {
 
     @Override
     public List<StockVo> getTradeStockList(List<GetStockListResponse> stockList) {
-        List<StockVo> list = stockList.stream().filter(v -> StockUtil.isStockCode(v.getZqdm())).map(v -> {
-            StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
-            DailyIndex dailyIndex = stockCrawlerService.getDailyIndex(stockInfo.getCode());
-            BigDecimal rate = StockUtil.calcIncreaseRate(dailyIndex.getClosingPrice(),
-                    dailyIndex.getPreClosingPrice());
-
+        List<StockVo> list = stockList.stream()
+                //.filter(v -> StockUtil.isStockCode(v.getZqdm()))
+                .map(v -> {
+//          StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
+//          DailyIndex dailyIndex = stockCrawlerService.getDailyIndex(stockInfo.getCode());
+            BigDecimal rate = StockUtil.calcIncreaseRate(new BigDecimal(v.getZxjg()), new BigDecimal(v.getCbjg()));
             StockVo stockVo = new StockVo();
-            stockVo.setAbbreviation(stockInfo.getAbbreviation());
-            stockVo.setStockCode(stockInfo.getCode());
-            stockVo.setExchange(stockInfo.getExchange());
-            stockVo.setName(stockInfo.getName());
+            //stockVo.setAbbreviation(stockInfo.getAbbreviation());
+            stockVo.setStockCode(v.getZqdm());
+            //stockVo.setExchange(stockInfo.getExchange());
+            stockVo.setName(v.getZqmc());
             stockVo.setAvailableVolume(Integer.parseInt(v.getKysl()));
             stockVo.setTotalVolume(Integer.parseInt(v.getZqsl()));
             stockVo.setPrice(new BigDecimal(v.getZxjg()));
@@ -190,21 +192,25 @@ public class TradeServiceImpl implements TradeService {
             stockVo.setRate(rate);
             return stockVo;
         }).collect(Collectors.toList());
+
+
         return list;
     }
 
     @Override
     public List<OrderVo> getTradeOrderList(List<GetOrdersDataResponse> orderList) {
-        List<OrderVo> list = orderList.stream().filter(v -> StockUtil.isStockCode(v.getZqdm())).map(v -> {
-            StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
+        List<OrderVo> list = orderList.stream()
+                //.filter(v -> StockUtil.isStockCode(v.getZqdm()))
+                .map(v -> {
+            //StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
             OrderVo orderVo = new OrderVo();
-            orderVo.setAbbreviation(stockInfo.getAbbreviation());
+            //orderVo.setAbbreviation(stockInfo.getAbbreviation());
             orderVo.setEnsuerTime(v.getWtsj());
             orderVo.setEntrustCode(v.getWtbh());
             orderVo.setPrice(new BigDecimal(v.getWtjg()));
             orderVo.setState(v.getWtzt());
             orderVo.setStockCode(v.getZqdm());
-            orderVo.setStockName(stockInfo.getName());
+            orderVo.setStockName(v.getZqmc());
             orderVo.setTradeType(v.getMmlb());
             orderVo.setVolume(Integer.parseInt(v.getWtsl()));
             return orderVo;
@@ -217,7 +223,9 @@ public class TradeServiceImpl implements TradeService {
         if (data.isEmpty()) {
             return Collections.emptyList();
         }
-        return data.stream().filter(v -> StockUtil.isStockCode(v.getZqdm())).map(v -> {
+        return data.stream()
+                //.filter(v -> StockUtil.isStockCode(v.getZqdm()))
+                .map(v -> {
             DealVo dealVo = new DealVo();
             dealVo.setTradeCode(v.getCjbh());
             dealVo.setPrice(v.getCjjg());
@@ -227,9 +235,9 @@ public class TradeServiceImpl implements TradeService {
             dealVo.setVolume(v.getCjsl());
             dealVo.setEntrustCode(v.getWtbh());
             dealVo.setStockCode(v.getZqdm());
-            StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
-            dealVo.setStockName(stockInfo.getName());
-            dealVo.setAbbreviation(stockInfo.getAbbreviation());
+            //StockInfo stockInfo = stockService.getStockByFullCode(StockUtil.getFullCode(v.getZqdm()));
+            dealVo.setStockName(v.getZqmc());
+            //dealVo.setAbbreviation(stockInfo.getAbbreviation());
             return dealVo;
         }).collect(Collectors.toList());
     }

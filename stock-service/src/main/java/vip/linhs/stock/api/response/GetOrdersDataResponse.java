@@ -52,6 +52,19 @@ public class GetOrdersDataResponse {
      */
     private String Mmlb;
 
+    /**
+     * 证券名称
+     */
+    private String Zqmc;
+
+    public String getZqmc() {
+        return Zqmc;
+    }
+
+    public void setZqmc(String zqmc) {
+        Zqmc = zqmc;
+    }
+
     public String getWtbh() {
         return Wtbh;
     }

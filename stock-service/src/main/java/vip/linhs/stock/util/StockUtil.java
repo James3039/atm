@@ -83,6 +83,10 @@ public class StockUtil {
     }
 
     public static BigDecimal calcIncreaseRate(BigDecimal a, BigDecimal b) {
+        BigDecimal zero = BigDecimal.ZERO;
+        if (b.compareTo(zero)== 0 || DecimalUtil.sub(a, b).compareTo(zero)==0  || a.compareTo(zero)==0 ){
+            return zero;
+        }
         return DecimalUtil.div(DecimalUtil.sub(a, b), b);
     }
 

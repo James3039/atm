@@ -106,6 +106,11 @@ public class TradeController extends BaseController {
         return response;
     }
 
+    /**
+     * 我的成交
+     * @param pageParam
+     * @return
+     */
     @RequestMapping("dealList")
     public PageVo<DealVo> getDealList(PageParam pageParam) {
         GetDealDataRequest request = new GetDealDataRequest(getUserId());
@@ -162,6 +167,7 @@ public class TradeController extends BaseController {
         return CommonResponse.buildResponse("success");
     }
 
+
     @RequestMapping("buy")
     public CommonResponse buy(int amount, double price, String stockCode) {
         SubmitRequest request = new SubmitRequest(getUserId());
@@ -186,7 +192,9 @@ public class TradeController extends BaseController {
 
     @RequestMapping("stockList")
     public PageVo<StockVo> getStockList(PageParam pageParam) {
+
         GetStockListRequest request = new GetStockListRequest(getUserId());
+
         TradeResultVo<GetStockListResponse> response = tradeApiService.getStockList(request);
         if (response.isSuccess()) {
             List<StockVo> list = tradeService.getTradeStockList(response.getData());
@@ -201,7 +209,9 @@ public class TradeController extends BaseController {
         TradeResultVo<GetOrdersDataResponse> response = tradeApiService.getOrdersData(request);
         if (response.isSuccess()) {
             List<OrderVo> list = tradeService.getTradeOrderList(response.getData());
-            list = list.stream().filter(v -> v.getState().equals(GetOrdersDataResponse.YIBAO)).collect(Collectors.toList());
+            list = list.stream()
+                    .filter(v -> v.getState().equals(GetOrdersDataResponse.YIBAO))
+                    .collect(Collectors.toList());
             return new PageVo<>(subList(list, pageParam), list.size());
         }
         return new PageVo<>(Collections.emptyList(), 0);

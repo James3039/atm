@@ -1,5 +1,9 @@
 package vip.linhs.stock.api.request;
 
+
+/**
+ * 获取 成交
+ */
 public class GetOrdersDataRequest extends BaseTradeRequest {
 
     public GetOrdersDataRequest(int userId) {

@@ -1,5 +1,8 @@
 package vip.linhs.stock.api.response;
 
+import lombok.Data;
+
+@Data
 public class GetDealDataResponse {
 
     /**
@@ -48,74 +51,62 @@ public class GetDealDataResponse {
      */
     private String Mmlb;
 
-    public String getWtbh() {
-        return Wtbh;
-    }
+    /**
+     * 证券名称
+     */
+    private String Zqmc;
+    /**
+     * 成交时间
+     */
 
-    public void setWtbh(String wtbh) {
-        Wtbh = wtbh;
-    }
+    private String Cjsj2;
+    /**
+     * 买卖
+     */
 
-    public String getCjbh() {
-        return Cjbh;
-    }
+    private String Mmsm;
 
-    public void setCjbh(String cjbh) {
-        Cjbh = cjbh;
-    }
+    /**
+     * 成交价格
+     */
+    private String Cjje;
 
-    public String getCjjg() {
-        return Cjjg;
-    }
+    /**
+     * 市值
+     */
+    private String Market;
 
-    public void setCjjg(String cjjg) {
-        Cjjg = cjjg;
-    }
+    /**
+     * 挂单代码
+     */
+    private String Gddm;
 
-    public String getCjsl() {
-        return Cjsl;
-    }
+    private String Dwc;
 
-    public void setCjsl(String cjsl) {
-        Cjsl = cjsl;
-    }
+    private String Cjrq;
 
-    public String getCjsj() {
-        return Cjsj;
-    }
+    private String Cpbm;
 
-    public void setCjsj(String cjsj) {
-        Cjsj = cjsj;
-    }
+    private String Cpmc;
 
-    public String getZqdm() {
-        return Zqdm;
-    }
+    private String Cjlx;
 
-    public void setZqdm(String zqdm) {
-        Zqdm = zqdm;
-    }
+    /**
+     * 委托价格
+     */
+    private String Wtjg;
 
-    public String getMmlb() {
-        return Mmlb;
-    }
+    private String Sbhtxh;
 
-    public void setMmlb(String mmlb) {
-        Mmlb = mmlb;
-    }
+    private String Zqyjlx;
 
-    public String getWtsl() {
-        return Wtsl;
-    }
 
-    public void setWtsl(String wtsl) {
-        Wtsl = wtsl;
-    }
 
-    @Override
-    public String toString() {
-        return "GetDealDataResponse [Wtbh=" + Wtbh + ", Cjbh=" + Cjbh + ", Cjjg=" + Cjjg + ", Cjsl="
-                + Cjsl + ", Zqdm=" + Zqdm + ", Cjsj=" + Cjsj + ", Mmlb=" + Mmlb + ", Wtsl=" + Wtsl + "]";
-    }
+    private String Mmlb_ex;
+
+    private String Mmlb_bs;
+
+
+
 
 }

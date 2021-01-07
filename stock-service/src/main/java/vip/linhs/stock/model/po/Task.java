@@ -2,12 +2,20 @@ package vip.linhs.stock.model.po;
 
 import vip.linhs.stock.exception.ServiceException;
 
+/**
+ * 类型 枚举
+ */
 public enum Task {
 
-    BeginOfYear(1, "begin_of_year"), EndOfYear(2, "end_of_year"), BeginOfDay(3, "begin_of_day"),
-    EndOfDay(4, "end_of_day"), UpdateOfStock(5, "update_of_stock"),
-    UpdateOfStockState(6, "update_of_stock_state"), UpdateOfDailyIndex(7, "update_of_daily_index"),
-    Ticker(8, "ticker"), TradeTicker(9, "trade_ticker");
+    BeginOfYear(1, "begin_of_year"),
+    EndOfYear(2, "end_of_year"),
+    BeginOfDay(3, "begin_of_day"),
+    EndOfDay(4, "end_of_day"),
+    UpdateOfStock(5, "update_of_stock"),
+    UpdateOfStockState(6, "update_of_stock_state"),
+    UpdateOfDailyIndex(7, "update_of_daily_index"),
+    Ticker(8, "ticker"),
+    TradeTicker(9, "trade_ticker");
 
     private int id;
     private String name;

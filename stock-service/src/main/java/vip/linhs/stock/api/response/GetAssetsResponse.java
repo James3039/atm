@@ -1,54 +1,43 @@
 package vip.linhs.stock.api.response;
 
+import lombok.Data;
+
+import java.util.List;
+
+@Data
 public class GetAssetsResponse {
 
     /**
      * 总资产
      */
     private String Zzc;
+
+    private String Zxsz;
+
     /**
      * 可用资金
      */
     private String Kyzj;
+
     /**
      * 可取资金
      */
     private String Kqzj;
+
     /**
      * 冻结资金
      */
     private String Djzj;
 
-    public String getZzc() {
-        return Zzc;
-    }
+    private String Zjye;
 
-    public void setZzc(String zzc) {
-        Zzc = zzc;
-    }
+    private String Money_type;
 
-    public String getKyzj() {
-        return Kyzj;
-    }
+    private String Drckyk;
 
-    public void setKyzj(String kyzj) {
-        Kyzj = kyzj;
-    }
+    private String Ljyk;
 
-    public String getKqzj() {
-        return Kqzj;
-    }
+    private List<F303S> F303S;
 
-    public void setKqzj(String kqzj) {
-        Kqzj = kqzj;
-    }
-
-    public String getDjzj() {
-        return Djzj;
-    }
-
-    public void setDjzj(String djzj) {
-        Djzj = djzj;
-    }
 
 }

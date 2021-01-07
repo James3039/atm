@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.BeanMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,8 @@ import vip.linhs.stock.service.TradeService;
 
 @Service
 public class TradeApiServiceImpl extends AbstractTradeApiService {
+
+    Logger log = LoggerFactory.getLogger(TradeApiServiceImpl.class);
 
     private static final List<String> IgnoreList = Arrays.asList("class", "userId", "method");
 
@@ -74,7 +78,8 @@ public class TradeApiServiceImpl extends AbstractTradeApiService {
         Map<String, Object>  params = getParams(request);
         Map<String, String> header = getHeader(request);
         String content = tradeClient.send(url, params, header);
-
+        // 打印获取的数据
+        log.info("response data : {}",content);
         ResponseParser responseParse = getResponseParser(request);
         return responseParse.parse(content, responseType);
     }

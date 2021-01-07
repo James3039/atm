@@ -1,5 +1,8 @@
 package vip.linhs.stock.api.request;
 
+/**
+ * 撤单
+ */
 public class RevokeRequest extends BaseTradeRequest {
 
     private String revokes;

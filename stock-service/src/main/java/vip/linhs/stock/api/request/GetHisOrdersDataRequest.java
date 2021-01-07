@@ -1,5 +1,8 @@
 package vip.linhs.stock.api.request;
 
+/**
+ * 获取历史订单
+ */
 public class GetHisOrdersDataRequest extends BaseTradeRequest {
 
     private String st;

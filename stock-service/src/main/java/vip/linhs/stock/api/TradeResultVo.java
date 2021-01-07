@@ -7,7 +7,9 @@ public class TradeResultVo<T> {
     public static final int STATUS_SUCCESS = 0;
 
     private String Message;
+
     private int Status;
+
     private List<T> Data;
 
     public String getMessage() {

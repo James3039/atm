@@ -1,5 +1,8 @@
 package vip.linhs.stock.api.request;
 
+/**
+ * 卖出 买入 提交
+ */
 public class SubmitRequest extends BaseTradeRequest {
 
     /**

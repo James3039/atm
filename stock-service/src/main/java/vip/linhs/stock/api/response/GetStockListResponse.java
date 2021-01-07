@@ -1,60 +1,38 @@
 package vip.linhs.stock.api.response;
 
+import lombok.Data;
+
+@Data
 public class GetStockListResponse {
-
+    /**
+     * 证券代码
+     */
     private String Zqdm;
+    /**
+     * 证券数量
+     */
     private String Zqsl;
+    /**
+     * 最新价格
+     */
     private String Zxjg;
+    /**
+     * 可用数量
+     */
     private String Kysl;
+    /**
+     * 成本价格
+     */
     private String Cbjg;
+    /**
+     * 累计盈亏
+     */
     private String Ljyk;
+    /**
+     * 名字
+     */
+    private String Zqmc;
 
-    public String getZqdm() {
-        return Zqdm;
-    }
 
-    public void setZqdm(String zqdm) {
-        Zqdm = zqdm;
-    }
-
-    public String getZqsl() {
-        return Zqsl;
-    }
-
-    public void setZqsl(String zqsl) {
-        Zqsl = zqsl;
-    }
-
-    public String getZxjg() {
-        return Zxjg;
-    }
-
-    public void setZxjg(String zxjg) {
-        Zxjg = zxjg;
-    }
-
-    public String getKysl() {
-        return Kysl;
-    }
-
-    public void setKysl(String kysl) {
-        Kysl = kysl;
-    }
-
-    public String getCbjg() {
-        return Cbjg;
-    }
-
-    public void setCbjg(String cbjg) {
-        Cbjg = cbjg;
-    }
-
-    public String getLjyk() {
-        return Ljyk;
-    }
-
-    public void setLjyk(String ljyk) {
-        Ljyk = ljyk;
-    }
 
 }

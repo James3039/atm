@@ -20,4 +20,4 @@ logging:
   level:
     root: info
     org.springfromework.web: info
-    org.springframework.jdbc: debug
+    org.springframework.jdbc: info
