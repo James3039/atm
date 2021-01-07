@@ -48,7 +48,7 @@ public class TradeApiServiceImpl extends AbstractTradeApiService {
         @Override
         public <T> TradeResultVo<T> parse(String content, TypeReference<T> responseType) {
             TradeResultVo<T> resultVo = JSON.parseObject(content, new TypeReference<TradeResultVo<T>>() {});
-            if (! resultVo.isSuccess() ) {
+            if ( resultVo.isSuccess() ) {
                 List<T> list = resultVo.getData();
                 ArrayList<T> newList = new ArrayList<>(list.size());
                 if (list != null) {
@@ -87,6 +87,7 @@ public class TradeApiServiceImpl extends AbstractTradeApiService {
     @Override
     public TradeResultVo<AuthenticationResponse> authentication(AuthenticationRequest request) {
         TradeMethod tradeMethod = tradeService.getTradeMethodByName(request.getMethod());
+        // 获取资金账号
         TradeUser tradeUser = tradeService.getTradeById(request.getUserId());
 
         Map<String, Object> params = getParams(request);
