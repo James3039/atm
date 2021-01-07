@@ -11,6 +11,7 @@ public class GetHisDealDataResponse extends GetDealDataResponse {
      */
     private String Cjrq;
 
+
     public String getCjxh() {
         return Cjxh;
     }

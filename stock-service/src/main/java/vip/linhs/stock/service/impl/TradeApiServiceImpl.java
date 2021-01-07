@@ -48,7 +48,7 @@ public class TradeApiServiceImpl extends AbstractTradeApiService {
         @Override
         public <T> TradeResultVo<T> parse(String content, TypeReference<T> responseType) {
             TradeResultVo<T> resultVo = JSON.parseObject(content, new TypeReference<TradeResultVo<T>>() {});
-            if (resultVo.isSuccess()) {
+            if (! resultVo.isSuccess() ) {
                 List<T> list = resultVo.getData();
                 ArrayList<T> newList = new ArrayList<>(list.size());
                 if (list != null) {
@@ -76,7 +76,7 @@ public class TradeApiServiceImpl extends AbstractTradeApiService {
     public <T> TradeResultVo<T> send(BaseTradeRequest request, TypeReference<T> responseType) {
         String url = getUrl(request);
         Map<String, Object>  params = getParams(request);
-        Map<String, String> header = getHeader(request);
+        Map<String, String>  header =  getHeader(request);
         String content = tradeClient.send(url, params, header);
         // 打印获取的数据
         log.info("response data : {}",content);

@@ -18,10 +18,11 @@ import vip.linhs.stock.util.HttpUtil;
 @Component
 public class TradeClient {
 
-    private ThreadLocal<ClientWrapper> threadLocal = new ThreadLocal<>();
+    private final ThreadLocal<ClientWrapper> threadLocal = new ThreadLocal<>();
 
     @Autowired
     private CloseableHttpClient httpClient;
+
 
     public String send(String url, Map<String, Object> params, Map<String, String> header) {
         String content = HttpUtil.sendPost(httpClient, url, params, header);
